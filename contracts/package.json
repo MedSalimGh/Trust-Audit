@@ -1,0 +1,23 @@
+{
+  "name": "trustaudit-contracts",
+  "version": "1.0.0",
+  "description": "Smart contracts for TrustAudit: AI-assisted, blockchain-backed banking transaction audit platform",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:ganache": "hardhat run scripts/deploy.ts --network ganache",
+    "configure:ganache": "hardhat run scripts/configureRoles.ts --network ganache"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "5.0.2",
+    "@types/chai": "^4.3.16",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.12.7",
+    "chai": "^4.3.7",
+    "ethers": "^6.12.0",
+    "hardhat": "^2.22.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}

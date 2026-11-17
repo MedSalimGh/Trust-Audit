@@ -1,0 +1,28 @@
+# Node / Hardhat
+node_modules/
+cache/
+artifacts/
+typechain/
+typechain-types/
+dist/
+frontend/dist/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+*.sqlite3
+*.sqlite
+*.db
+
+# Environment & IDE
+.env
+.env.local
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
