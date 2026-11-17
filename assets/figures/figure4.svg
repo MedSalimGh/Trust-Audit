@@ -1,0 +1,101 @@
+<svg width="740" height="490" viewBox="0 0 740 490" xmlns="http://www.w3.org/2000/svg" style="font-family:'Times New Roman',serif; background:#ffffff;">
+    <defs>
+        <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#1565c0"/>
+        </marker>
+        <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#2e7d32"/>
+        </marker>
+        <marker id="arrow-dark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#374151"/>
+        </marker>
+    </defs>
+
+    <!-- ================= CONTENEUR GAUCHE : HORS-CHAINE ================= -->
+    <rect x="15" y="15" width="230" height="425" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4"/>
+    <text x="130" y="36" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">Environnement Hors-Chaîne (Banque)</text>
+
+    <!-- 1. Opérateur Bancaire -->
+    <rect x="28" y="52" width="204" height="48" rx="4" fill="#ffffff" stroke="#334155" stroke-width="1"/>
+    <text x="130" y="71" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Opérateur Bancaire</text>
+    <text x="130" y="87" font-size="8.5" fill="#475569" text-anchor="middle">Saisie dossier &amp; sel 32 o</text>
+
+    <!-- 2. Oracle IA & SHAP -->
+    <rect x="28" y="132" width="204" height="48" rx="4" fill="#ffffff" stroke="#334155" stroke-width="1"/>
+    <text x="130" y="151" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Oracle IA &amp; SHAP</text>
+    <text x="130" y="167" font-size="8.5" fill="#475569" text-anchor="middle">Score [0, 100] &amp; facteurs</text>
+
+    <!-- 3. Signataires (MetaMask) -->
+    <rect x="28" y="212" width="204" height="54" rx="4" fill="#ffffff" stroke="#334155" stroke-width="1"/>
+    <text x="130" y="231" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Signataires (MetaMask)</text>
+    <text x="130" y="246" font-size="8.5" fill="#334155" text-anchor="middle">Conformité,</text>
+    <text x="130" y="258" font-size="8.5" fill="#334155" text-anchor="middle">Risques, Direction</text>
+
+    <!-- 4. Noyau Bancaire -->
+    <rect x="28" y="296" width="204" height="46" rx="4" fill="#ffffff" stroke="#334155" stroke-width="1"/>
+    <text x="130" y="315" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Noyau Bancaire</text>
+    <text x="130" y="331" font-size="8.5" fill="#475569" text-anchor="middle">Règlement idempotent</text>
+
+    <!-- 5. Base Privée SQLite -->
+    <rect x="28" y="368" width="204" height="56" rx="4" fill="#ffffff" stroke="#334155" stroke-width="1"/>
+    <text x="130" y="388" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Base Privée SQLite</text>
+    <text x="130" y="403" font-size="8.5" fill="#475569" text-anchor="middle">PII, montants,</text>
+    <text x="130" y="416" font-size="8.5" fill="#475569" text-anchor="middle">sels (Hors-chaîne)</text>
+
+    <!-- Liaison interne : Opérateur vers Base Privée -->
+    <path d="M 28 76 L 18 76 L 18 396 L 28 396" fill="none" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+
+    <!-- ================= CONTENEUR DROIT : GANACHE EVM ================= -->
+    <rect x="495" y="125" width="230" height="315" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1.2" stroke-dasharray="5,4"/>
+    <text x="610" y="145" font-size="10" font-weight="bold" fill="#1565c0" text-anchor="middle">Blockchain Ganache (Chain 1337)</text>
+
+    <!-- Box TrustAuditRegistry.sol -->
+    <rect x="510" y="160" width="200" height="58" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+    <text x="610" y="180" font-size="9.5" font-weight="bold" fill="#1e3a8a" text-anchor="middle">TrustAuditRegistry.sol</text>
+    <text x="610" y="196" font-size="8.5" fill="#1e40af" text-anchor="middle">Machine à états,</text>
+    <text x="610" y="209" font-size="8.5" fill="#1e40af" text-anchor="middle">RBAC &amp; Quorum</text>
+
+    <!-- Flèche 4 : mintCertificate(vault, caseId) -->
+    <line x1="610" y1="218" x2="610" y2="258" stroke="#1565c0" stroke-width="1.2" marker-end="url(#arrow-blue)"/>
+    <text x="610" y="235" font-size="8" fill="#1e3a8a" text-anchor="middle">4. mintCertificate(vault, caseId)</text>
+    <text x="610" y="246" font-size="7.5" fill="#64748b" text-anchor="middle">(si statut APPROVED)</text>
+
+    <!-- Box TrustAuditCertificate.sol -->
+    <rect x="510" y="260" width="200" height="54" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+    <text x="610" y="280" font-size="9.5" font-weight="bold" fill="#1e3a8a" text-anchor="middle">TrustAuditCertificate.sol</text>
+    <text x="610" y="295" font-size="8.5" fill="#1e40af" text-anchor="middle">Soulbound NFT</text>
+    <text x="610" y="307" font-size="8.5" fill="#1e40af" text-anchor="middle">(ERC-721 / 5192)</text>
+
+    <!-- Flèche Verrou ERC-5192 -->
+    <line x1="610" y1="314" x2="610" y2="352" stroke="#2e7d32" stroke-width="1.2" stroke-dasharray="4,2" marker-end="url(#arrow-green)"/>
+    <text x="610" y="337" font-size="8" fill="#2e7d32" font-weight="bold" text-anchor="middle">Verrou ERC-5192</text>
+
+    <!-- Box Coffre Institutionnel -->
+    <rect x="510" y="354" width="200" height="46" rx="4" fill="#ffffff" stroke="#16a34a" stroke-width="1.2"/>
+    <text x="610" y="373" font-size="9.5" font-weight="bold" fill="#14532d" text-anchor="middle">Coffre Institutionnel</text>
+    <text x="610" y="389" font-size="8.5" fill="#166534" text-anchor="middle">Vault (détenteur permanent)</text>
+
+    <!-- ================= FLÈCHES INTER-ENVIRONNEMENTS ================= -->
+    <!-- 1. registerCase(...) -->
+    <path d="M 232 76 L 498 76 L 498 175 L 508 175" fill="none" stroke="#1565c0" stroke-width="1.2" marker-end="url(#arrow-blue)"/>
+    <text x="365" y="68" font-size="8.5" font-weight="bold" fill="#1565c0" text-anchor="middle">1. registerCase(...)</text>
+    <text x="365" y="81" font-size="7.5" font-family="'Courier New',monospace" fill="#475569" text-anchor="middle">(saltedHash, tier, 48h)</text>
+
+    <!-- 2. recordAIAssessment(...) -->
+    <path d="M 232 156 L 485 156 L 485 188 L 508 188" fill="none" stroke="#1565c0" stroke-width="1.2" marker-end="url(#arrow-blue)"/>
+    <text x="365" y="148" font-size="8.5" font-weight="bold" fill="#1565c0" text-anchor="middle">2. recordAIAssessment(...)</text>
+    <text x="365" y="161" font-size="7.5" font-family="'Courier New',monospace" fill="#475569" text-anchor="middle">(score, riskLevel, expHash)</text>
+
+    <!-- 3. submitApproval / rejectCase -->
+    <path d="M 232 239 L 485 239 L 485 202 L 508 202" fill="none" stroke="#1565c0" stroke-width="1.2" marker-end="url(#arrow-blue)"/>
+    <text x="365" y="231" font-size="8.5" font-weight="bold" fill="#1565c0" text-anchor="middle">3. submitApproval / rejectCase</text>
+    <text x="365" y="244" font-size="7.5" fill="#475569" text-anchor="middle">(signatures MetaMask)</text>
+
+    <!-- 5. Verrou d'exécution (dashed green) -->
+    <path d="M 508 214 L 360 214 L 360 320 L 234 320" fill="none" stroke="#2e7d32" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow-green)"/>
+    <text x="365" y="307" font-size="8.5" font-weight="bold" fill="#2e7d32" text-anchor="middle">5. Verrou d'exécution :</text>
+    <text x="365" y="318" font-size="7.5" font-family="'Courier New',monospace" fill="#2e7d32" text-anchor="middle">getCase(caseId) == APPROVED ?</text>
+
+    <!-- Légende en bas de figure -->
+    <text x="370" y="475" font-size="9" font-style="italic" fill="#334155" text-anchor="middle">Figure 4 – Circuit d’exécution hybride hors chaîne / sur chaîne et verrou de règlement bancaire (Execution Gate).</text>
+</svg>

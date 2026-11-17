@@ -1,0 +1,339 @@
+/* ─── Fonts ────────────────────────────────────────────────────────────────── */
+@import '@fontsource/space-grotesk/400.css';
+@import '@fontsource/space-grotesk/500.css';
+@import '@fontsource/space-grotesk/600.css';
+@import '@fontsource/space-grotesk/700.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+/* ─── Tailwind ────────────────────────────────────────────────────────────── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Variables for Dynamic Theming ────────────────────────────────────── */
+:root {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #020617;
+  --text-secondary: #1e293b;
+  --text-muted: #475569;
+  --border-light: #cbd5e1;
+  --border-focus: #0284c7;
+  --card-bg: #ffffff;
+  --card-elevated: #ffffff;
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.05), 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 0 0 1px #e2e8f0;
+  --shadow-elevated: 0 16px 40px -6px rgba(15, 23, 42, 0.08), 0 6px 18px -2px rgba(15, 23, 42, 0.04), 0 0 0 1px #cbd5e1;
+  --glow-accent: 0 0 28px rgba(2, 132, 199, 0.18);
+  --spotlight-color: rgba(2, 132, 199, 0.08);
+}
+
+.dark {
+  --bg-primary: #030712;
+  --bg-secondary: #0a1128;
+  --bg-tertiary: #111d3a;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-light: rgba(34, 211, 238, 0.15);
+  --border-focus: rgba(34, 211, 238, 0.7);
+  --card-bg: rgba(10, 17, 40, 0.85);
+  --card-elevated: rgba(17, 29, 58, 0.95);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --shadow-elevated: 0 16px 64px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --glow-accent: 0 0 28px rgba(6, 182, 212, 0.3);
+  --spotlight-color: rgba(34, 211, 238, 0.08);
+}
+
+/* ─── Base Layer ──────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    @apply font-body antialiased transition-colors duration-200;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Focus-visible accessibility rings */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-cyan-500/70 ring-offset-2;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-cyan-500/25 text-cyan-900;
+  }
+
+  .dark ::selection {
+    @apply bg-cyan-500/30 text-cyan-100;
+  }
+}
+
+/* ─── Glassmorphism & Enterprise UI Components ────────────────────────────── */
+@layer components {
+  .glass {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-card);
+  }
+
+  .glass-elevated {
+    background: var(--card-elevated);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .glass-bordered {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-light);
+  }
+
+  .glass-interactive {
+    @apply glass transition-all duration-200;
+  }
+
+  .glass-interactive:hover {
+    border-color: var(--border-focus);
+    box-shadow: var(--shadow-elevated), var(--glow-accent);
+  }
+
+  /* ─── Micro-interaction utilities ──────────────────────────────────────── */
+
+  /* Lift effect on hover */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* Subtle glow border on hover */
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+  .hover-glow:hover {
+    border-color: var(--border-focus);
+    box-shadow: var(--glow-accent);
+  }
+
+  /* Press-down feedback */
+  .press-down:active {
+    transform: scale(0.97);
+    transition-duration: 100ms;
+  }
+
+  /* Shimmer loading effect */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(2, 132, 199, 0.08) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  .dark .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(17, 29, 58, 0) 0%,
+      rgba(34, 211, 238, 0.08) 50%,
+      rgba(17, 29, 58, 0) 100%
+    );
+    background-size: 200% 100%;
+  }
+
+  /* Grid pattern overlay */
+  .grid-pattern {
+    background-size: 32px 32px;
+    background-image: 
+      linear-gradient(to right, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+  }
+
+  .dark .grid-pattern {
+    background-size: 32px 32px;
+    background-image: 
+      linear-gradient(to right, rgba(34, 211, 238, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+  }
+
+  /* Fine Dot pattern for light & dark mode */
+  .dot-pattern {
+    background-size: 24px 24px;
+    background-image: radial-gradient(rgba(148, 163, 184, 0.25) 1px, transparent 1px);
+  }
+
+  .dark .dot-pattern {
+    background-image: radial-gradient(rgba(34, 211, 238, 0.15) 1px, transparent 1px);
+  }
+
+  /* Dynamic Card Spotlight Overlay */
+  .spotlight-card {
+    position: relative;
+    overflow: hidden;
+  }
+  .spotlight-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: radial-gradient(
+      450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      var(--spotlight-color),
+      transparent 65%
+    );
+    z-index: 1;
+  }
+  .spotlight-card:hover::before {
+    opacity: 1;
+  }
+
+  /* 3D Depth Card Tilt Container */
+  .card-tilt {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  /* Floating animation classes */
+  .animate-float-slow {
+    animation: floatSlow 6s ease-in-out infinite;
+  }
+
+  .animate-float-reverse {
+    animation: floatReverse 7s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 4s ease-in-out infinite;
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(8px) rotate(-1deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.06);
+  }
+}
+
+/* ─── Scrollbar Styling ───────────────────────────────────────────────────── */
+@layer base {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.3);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.6);
+  }
+}
+
+/* ─── Scroll Reveal & Micro-Interactions System ──────────────────────────── */
+@layer utilities {
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .scroll-reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+    will-change: auto;
+  }
+
+  .ease-spring {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .interactive-tap {
+    transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms ease;
+  }
+  .interactive-tap:active {
+    transform: scale(0.98);
+  }
+
+  .interactive-lift {
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms ease;
+  }
+  .interactive-lift:hover {
+    transform: translateY(-2px);
+  }
+  .interactive-lift:active {
+    transform: translateY(0) scale(0.98);
+  }
+}
+
+/* ─── Reduced Motion ──────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .scroll-reveal,
+  .scroll-reveal-item,
+  .animate-marquee {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+    will-change: auto !important;
+  }
+}
